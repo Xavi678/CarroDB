@@ -241,6 +241,25 @@ public class GestorBd {
 		insertUser.setString(2, usuari.password);
 		insertUser.executeUpdate();
 	}
+
+	public ArrayList<Producte> obtenirProductes() throws SQLException {
+		
+		ArrayList<Producte> productes= new ArrayList<Producte>();
+		
+		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
+		
+		String sql ="Select * from Productes";
+		
+		PreparedStatement selectP= conn.prepareStatement(sql);
+		ResultSet rs=selectP.executeQuery();
+		while(rs.next()) {
+			
+			productes.add(new Producte(rs.getString("nom"),rs.getInt("disponbilitat"),rs.getString("descripcio"),rs.getInt("preu")));
+			
+		}
+		
+		return productes;
+	}
 	
 	
 

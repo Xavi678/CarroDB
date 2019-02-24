@@ -2,7 +2,7 @@ package almata.daw;
 
 public class Producte {
 	
-	private String id;
+	private int id;
 	private String nom;
 	private int disponibilitat;
 	private String descripcio;
@@ -10,16 +10,45 @@ public class Producte {
 	private Usuari propietari;
 	
 	
+	public Producte() {
+		
+	}
+	
+	
+	public Producte(String nom, int disponibilitat, String descripcio, int preu) {
+		super();
+		
+		this.nom = nom;
+		this.disponibilitat = disponibilitat;
+		this.descripcio = descripcio;
+		this.preu = preu;
+	}
+	
+	
+	
+	
+	public Producte(int id, String nom, int disponibilitat, String descripcio, int preu, Usuari propietari) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.disponibilitat = disponibilitat;
+		this.descripcio = descripcio;
+		this.preu = preu;
+		this.propietari = propietari;
+	}
+
+
 	public Usuari getPropietari() {
 		return propietari;
 	}
 	public void setPropietari(Usuari propietari) {
 		this.propietari = propietari;
 	}
-	public String getId() {
+	
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getNom() {

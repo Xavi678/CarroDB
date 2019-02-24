@@ -18,6 +18,12 @@
                 <interceptor-ref name="defaultStack"/>
                 </interceptor-stack>
    </interceptors>
+   
+   <action name="LoginUser" class="almata.daw.LoginAction" method="Login">
+    
+      <result name="success" >index.jsp</result>
+      <result name="login">login.jsp</result>
+      </action>
      
        <action name="LoginUser" class="almata.daw.LoginAction" method="Login">
     
