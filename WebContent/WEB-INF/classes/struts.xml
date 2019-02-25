@@ -19,17 +19,24 @@
                 </interceptor-stack>
    </interceptors>
    
-   <action name="LoginUser" class="almata.daw.LoginAction" method="Login">
-    
-      <result name="success" >index.jsp</result>
-      <result name="login">login.jsp</result>
-      </action>
-     
+   
        <action name="LoginUser" class="almata.daw.LoginAction" method="Login">
     
-      <result name="success" >index.jsp</result>
+      <result name="success" type="redirectAction">llistar</result>
       <result name="login">login.jsp</result>
       </action>
+      <action name="llistar" class="almata.daw.LlistarAction" method="llistarProdcutes">
+      <result name="success">main.jsp</result>
+      </action>
+      
+      <action name="logOut" class="almata.daw.LoginAction" method="logOut">
+      <result name="success">login.jsp</result>
+      </action>
+      
+      <action name="nouProducte" class="almata.daw.nouProducte" method="nouProducte">
+      <result name="success" type="redirectAction">llistar</result>
+      </action>
+      
    </package>
 
 </struts>

@@ -260,6 +260,11 @@ public class GestorBd {
 		
 		return productes;
 	}
+
+	public void inserirProducte(Producte producte) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

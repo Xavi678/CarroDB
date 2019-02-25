@@ -13,11 +13,11 @@
 		<jsp:param name="menuActual" value="nouUsuari.action"/>
 	</jsp:include>
 	 <s:actionerror/>
-	 <s:form action="nouUsuari.action" validate="true" >
-	  <s:textfield key="newUser.login" name="producte.nom" />
-	 <s:textfield key="newUser.nom" name="producte.disponbilitat" />
-	 <s:textfield key="newUser.passwd"  name="producte.descripcio" />
-	 <s:textfield key="newUser.passwd"  name="producte.preu" />
+	 <s:form action="nouProducte.action" validate="true" >
+	  <s:textfield key="newUser.nom" name="producte.nom" />
+	 <s:textfield key="newUser.dispo" name="producte.disponbilitat" />
+	 <s:textfield key="newUser.descripcio"  name="producte.descripcio" />
+	 <s:textfield key="newUser.preu"  name="producte.preu" />
 	 
      
       <s:submit name="submit" key="global.save" align="center" />
