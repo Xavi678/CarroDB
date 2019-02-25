@@ -1,5 +1,6 @@
 package almata.daw;
 
+import java.sql.SQLException;
 import java.util.Map;
 
 import org.apache.struts2.dispatcher.SessionMap;
@@ -28,11 +29,11 @@ private SessionMap<String, Object> session;
 		this.producte = producte;
 	}
 	
-	public String nouProducte() {
+	public String nouProducte() throws SQLException {
 		
 		Usuari propietari=(Usuari) session.get("loginId");
 		
-		this.producte.setPropietari(propietari);
+		this.producte.setPropietari(propietari.getLogin());
 		
 		db.inserirProducte(this.producte);
 		

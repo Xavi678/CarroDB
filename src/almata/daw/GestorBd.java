@@ -261,9 +261,32 @@ public class GestorBd {
 		return productes;
 	}
 
-	public void inserirProducte(Producte producte) {
-		// TODO Auto-generated method stub
+	public void inserirProducte(Producte producte) throws SQLException {
+		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
+		String sqlInserir="insert into productes Values(?,?,?,?,?)";
+		PreparedStatement insert=conn.prepareStatement(sqlInserir);
+		insert.setString(1, producte.getNom());
+		insert.setInt(2, producte.getDisponibilitat());
+		insert.setString(3, producte.getDescripcio());
+		insert.setInt(4, producte.getPreu());
+		insert.setString(5, producte.getPropietari());
+	}
+
+	public void crearCarro(Usuari usuari) throws SQLException {
+		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
+		String sql="CREATE TABLE carro_"+usuari.getLogin()+"(\n" + 
+				"id int not null primary key auto_increment,\n" + 
+				"nom varchar(100) not null,\n" + 
+				"disponibilitat int not null,\n" + 
+				"descripcio varchar(100) not null,\n" + 
+				"propietari varchar(100) not null,\n" + 
+				"\n" + 
+				"foreign key(propietari) references usuaris(login)\n" + 
+				" on update cascade\n" + 
+				" on delete cascade)ENGINE=INNODB;";
 		
+		PreparedStatement prst=conn.prepareStatement(sql);
+		prst.executeUpdate();
 	}
 	
 	

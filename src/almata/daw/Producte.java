@@ -7,7 +7,7 @@ public class Producte {
 	private int disponibilitat;
 	private String descripcio;
 	private int preu;
-	private Usuari propietari;
+	private String propietari;
 	
 	
 	public Producte() {
@@ -27,23 +27,18 @@ public class Producte {
 	
 	
 	
-	public Producte( String nom, int disponibilitat, String descripcio, int preu, Usuari propietari) {
+	public Producte( String nom, int disponibilitat, String descripcio, int preu, String propietari) {
 		super();
 		
 		this.nom = nom;
 		this.disponibilitat = disponibilitat;
 		this.descripcio = descripcio;
 		this.preu = preu;
-		this.propietari = propietari;
+		this.setPropietari(propietari);
 	}
 
 
-	public Usuari getPropietari() {
-		return propietari;
-	}
-	public void setPropietari(Usuari propietari) {
-		this.propietari = propietari;
-	}
+	
 	
 	
 	public String getNom() {
@@ -69,6 +64,16 @@ public class Producte {
 	}
 	public void setPreu(int preu) {
 		this.preu = preu;
+	}
+
+
+	public String getPropietari() {
+		return propietari;
+	}
+
+
+	public void setPropietari(String propietari) {
+		this.propietari = propietari;
 	}
 	
 	
