@@ -15,7 +15,7 @@
 	 <s:actionerror/>
 	 <s:form action="nouProducte.action" validate="true" >
 	  <s:textfield key="newUser.nom" name="producte.nom" />
-	 <s:textfield key="newUser.dispo" name="producte.disponbilitat" />
+	 <s:textfield key="newUser.dispo" name="producte.disponibilitat" />
 	 <s:textfield key="newUser.descripcio"  name="producte.descripcio" />
 	 <s:textfield key="newUser.preu"  name="producte.preu" />
 	 

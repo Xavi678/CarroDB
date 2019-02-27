@@ -123,6 +123,9 @@ public class LlistarAction  extends DBAction implements SessionAware {
 		//Usuari userLogin = (Usuari) session.get("loginId");
 		
 		//Usuari user=llistaUsuaris.get(userLogin.getLogin());
+		if(db==null) {
+			this.loadDB();
+		}
 		
 		try {
 			productes=db.obtenirProductes();

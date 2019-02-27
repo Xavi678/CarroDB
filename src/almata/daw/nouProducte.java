@@ -4,8 +4,9 @@ import java.sql.SQLException;
 import java.util.Map;
 
 import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.SessionAware;
 
-public class nouProducte extends DBAction {
+public class nouProducte extends DBAction implements SessionAware {
 	
 	private Producte producte;
 	
@@ -29,7 +30,12 @@ private SessionMap<String, Object> session;
 		this.producte = producte;
 	}
 	
-	public String nouProducte() throws SQLException {
+	public String nouProduct() throws SQLException {
+		
+		if(db==null) {
+			this.loadDB();
+		}
+		
 		
 		Usuari propietari=(Usuari) session.get("loginId");
 		

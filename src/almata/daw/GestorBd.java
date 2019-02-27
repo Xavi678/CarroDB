@@ -254,7 +254,7 @@ public class GestorBd {
 		ResultSet rs=selectP.executeQuery();
 		while(rs.next()) {
 			
-			productes.add(new Producte(rs.getString("nom"),rs.getInt("disponbilitat"),rs.getString("descripcio"),rs.getInt("preu")));
+			productes.add(new Producte(rs.getString("nom"),rs.getInt("disponibilitat"),rs.getString("descripcio"),rs.getInt("preu")));
 			
 		}
 		
@@ -263,13 +263,14 @@ public class GestorBd {
 
 	public void inserirProducte(Producte producte) throws SQLException {
 		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
-		String sqlInserir="insert into productes Values(?,?,?,?,?)";
+		String sqlInserir="insert into productes(nom,disponibilitat,descripcio,preu,propietari) Values(?,?,?,?,?)";
 		PreparedStatement insert=conn.prepareStatement(sqlInserir);
 		insert.setString(1, producte.getNom());
 		insert.setInt(2, producte.getDisponibilitat());
 		insert.setString(3, producte.getDescripcio());
 		insert.setInt(4, producte.getPreu());
 		insert.setString(5, producte.getPropietari());
+		insert.executeUpdate();
 	}
 
 	public void crearCarro(Usuari usuari) throws SQLException {
@@ -279,6 +280,7 @@ public class GestorBd {
 				"nom varchar(100) not null,\n" + 
 				"disponibilitat int not null,\n" + 
 				"descripcio varchar(100) not null,\n" + 
+				"preu int not null,\n" + 
 				"propietari varchar(100) not null,\n" + 
 				"\n" + 
 				"foreign key(propietari) references usuaris(login)\n" + 
