@@ -254,7 +254,7 @@ public class GestorBd {
 		ResultSet rs=selectP.executeQuery();
 		while(rs.next()) {
 			
-			productes.add(new Producte(rs.getString("nom"),rs.getInt("disponibilitat"),rs.getString("descripcio"),rs.getInt("preu")));
+			productes.add(new Producte(rs.getInt("id"),rs.getString("nom"),rs.getInt("disponibilitat"),rs.getString("descripcio"),rs.getInt("preu"),rs.getString("propietari")));
 			
 		}
 		
@@ -289,6 +289,45 @@ public class GestorBd {
 		
 		PreparedStatement prst=conn.prepareStatement(sql);
 		prst.executeUpdate();
+	}
+
+	public Producte obtenirProductealCarro(Producte producte) throws SQLException {
+		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
+		String sql="Select * from Carro where id=?";
+		
+		PreparedStatement trobar=conn.prepareStatement(sql);
+		trobar.setInt(1, producte.getId());
+		ResultSet rs=trobar.executeQuery();
+		Producte product=null;
+		while(rs.next()) {
+			product=new Producte(rs.getInt("id"),rs.getString("nom"),rs.getInt("disponibilitat"),rs.getString("descripcio"),rs.getInt("preu"),rs.getString("propietari"));
+		}
+		
+		return product;
+		
+	}
+
+	public void insertCarro(Producte producte) throws SQLException {
+		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
+		String sqlInserir="insert into carro(nom,disponibilitat,descripcio,preu,propietari) Values(?,?,?,?,?)";
+		PreparedStatement insert=conn.prepareStatement(sqlInserir);
+		insert.setString(1, producte.getNom());
+		insert.setInt(2, producte.getDisponibilitat());
+		insert.setString(3, producte.getDescripcio());
+		insert.setInt(4, producte.getPreu());
+		insert.setString(5, producte.getPropietari());
+		insert.executeUpdate();
+		
+	}
+
+	public void actualitzar(Producte producte) throws SQLException {
+		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
+		String sqlInserir="Update carro set disponibilitat disponibilitat=disponibilitat+1 where id=?";
+		PreparedStatement insert=conn.prepareStatement(sqlInserir);
+		insert.setInt(1, producte.getId());
+		
+		insert.executeUpdate();
+		
 	}
 	
 	

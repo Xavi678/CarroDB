@@ -15,7 +15,7 @@
 	<table width="100%">
 			<!-- capcalera -->
 			<tr><th colspan="4"><s:text name="llistat.llistatProductes" /></th></tr>
-			<tr bgcolor="grey"><th><b><s:text name="llistat.nom" /></b></th><th><b><s:text name="llistat.dispo" /></b></th><th><b><s:text name="llistat.descripcio" /></b></th><th><b><s:text name="llistat.preu" /></b></th> <th><b><s:text name="llistat.afegir" /></b></th>
+			<tr bgcolor="grey"><th><b><s:text name="llistat.nom" /></b></th><th><b><s:text name="llistat.dispo" /></b></th><th><b><s:text name="llistat.descripcio" /></b></th><th><b><s:text name="llistat.preu" /></b></th> <th><b><s:text name="llistat.propietari" /></b></th><th><b><s:text name="llistat.afegir" /></b></th>
 
 	<s:iterator value="productes" var="producte" status="rowstatus">
 	 			<!-- Pintem els parells diferent dels imparells -->
@@ -28,7 +28,9 @@
             	<!--  <td align="center"><s:property value="%{getText('global.date',{dataNaixement})}"/></td>	-->
             	<td align="center"><s:property value="descripcio"/></td>
             	<td align="center"><s:property value="preu"/></td>
-            	<td><s:checkbox name="checkboxes[%{#stat.index}]" theme="simple" /></td>
+            	<td align="center"><s:property value="propietari"/></td>
+            	<td><s:checkbox name="checkboxes[%{#rowstatus.index}]" theme="simple" /></td>
+            	<s:hidden value="%{productes.nom}"/>
             	
     </s:iterator>
    

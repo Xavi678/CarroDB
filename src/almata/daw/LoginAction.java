@@ -42,7 +42,7 @@ public class LoginAction  extends DBAction implements SessionAware {
 		if(user==null) {
 			db.crearUsuari(this.usuari);
 			session.put("loginId", this.usuari);
-			db.crearCarro(this.usuari);
+			//db.crearCarro(this.usuari);
 			return SUCCESS;
 		}else if(user!=null && user.validat(usuari)){
 			//db.crearCarro(this.usuari);
