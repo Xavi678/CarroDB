@@ -293,12 +293,13 @@ public class GestorBd {
 		prst.executeUpdate();
 	}
 
-	public Producte obtenirProductealCarro(Producte producte) throws SQLException {
+	public Producte obtenirProductealCarro(Producte producte, String login) throws SQLException {
 		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
-		String sql="Select * from Carro where id=?";
+		String sql="Select * from Carro where id=? and propietari=?";
 		
 		PreparedStatement trobar=conn.prepareStatement(sql);
 		trobar.setInt(1, producte.getId());
+		trobar.setString(2, login);
 		ResultSet rs=trobar.executeQuery();
 		Producte product=null;
 		while(rs.next()) {
@@ -309,7 +310,7 @@ public class GestorBd {
 		
 	}
 
-	public void insertCarro(Producte producte) throws SQLException {
+	public void insertCarro(Producte producte, String login) throws SQLException {
 		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
 		String sqlInserir="insert into carro(id,nom,disponibilitat,descripcio,preu,propietari) Values(?,?,?,?,?,?)";
 		PreparedStatement insert=conn.prepareStatement(sqlInserir);
@@ -318,7 +319,7 @@ public class GestorBd {
 		insert.setInt(3, 1);
 		insert.setString(4, producte.getDescripcio());
 		insert.setInt(5, producte.getPreu());
-		insert.setString(6, producte.getPropietari());
+		insert.setString(6, login);
 		insert.executeUpdate();
 		
 	}
@@ -374,7 +375,7 @@ public class GestorBd {
 
 	public void Comprar(Usuari user) throws SQLException {
 		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
-		String sql="delete * from Carro where propietari=?";
+		String sql="delete  from Carro where propietari=?";
 		
 		PreparedStatement delete=conn.prepareStatement(sql);
 		delete.setString(1, user.getLogin());
@@ -383,7 +384,7 @@ public class GestorBd {
 
 	public void eliminar(Producte producte,String login) throws SQLException {
 		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
-		String sql="delete * from Carro where id=? and propietari=?";
+		String sql="delete from Carro where id=? and propietari=?";
 		
 		PreparedStatement delete=conn.prepareStatement(sql);
 		delete.setInt(1, producte.getId());

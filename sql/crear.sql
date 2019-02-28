@@ -27,12 +27,14 @@ foreign key(propietari) references usuaris(login)
  
  
  create table carro(
-     id int not null primary key,
+     id int not null,
      nom varchar(100) not null,
      disponibilitat int not null,
      descripcio varchar(100) not null,
      preu int not null,
     propietari varchar(100) not null,
+    primary key(id,propietari),
+    
      foreign key(propietari) references usuaris(login)
       on update cascade
     on delete cascade

@@ -101,7 +101,7 @@ public class CarroAction extends DBAction implements SessionAware{
 		
 	}
 	
-	public String Eliminar() throws SQLException {
+	public String eliminar() throws SQLException {
 		if(db==null) {
 			this.loadDB();
 		}
@@ -139,12 +139,12 @@ private void printCheckBoxes(String login) throws SQLException {
 		    System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
 		    if(entry.getValue()==true) {
 		    	int pos=entry.getKey();
-		    	Producte p=db.obtenirProductealCarro(productes.get(pos));
+		    	Producte p=db.obtenirProductealCarro(productes.get(pos),login);
 		    	if(p!=null) {
 		    		db.actualitzar(p,login);
 		    		
 		    	}else {
-		    		db.insertCarro(productes.get(pos));
+		    		db.insertCarro(productes.get(pos),login);
 		    	}
 		    }
 		}

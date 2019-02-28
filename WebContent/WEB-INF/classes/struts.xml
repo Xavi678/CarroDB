@@ -65,7 +65,7 @@
         <action name="Eliminar" class="almata.daw.CarroAction" method="eliminar">
         <interceptor-ref name="loginStack"/>
         <result name="login">login.jsp</result>
-      <result name="success">carro.jsp</result>
+      <result name="success" type="redirectAction">llistarCarro</result>
        
       </action>
       

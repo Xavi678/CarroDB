@@ -15,7 +15,7 @@ text-align: center;
 </head>
 <body>
 	<jsp:include page="menu.jsp">
-		<jsp:param name="menuActual" value="llistar.action"/>
+		<jsp:param name="menuActual" value="llistarCarro.action"/>
 	</jsp:include>
 	<h1><s:text name="llistat.llistatCarro" /></h1>
 	
