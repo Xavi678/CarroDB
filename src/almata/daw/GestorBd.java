@@ -315,7 +315,7 @@ public class GestorBd {
 		PreparedStatement insert=conn.prepareStatement(sqlInserir);
 		insert.setInt(1, producte.getId());
 		insert.setString(2, producte.getNom());
-		insert.setInt(3, producte.getDisponibilitat());
+		insert.setInt(3, 1);
 		insert.setString(4, producte.getDescripcio());
 		insert.setInt(5, producte.getPreu());
 		insert.setString(6, producte.getPropietari());
@@ -323,11 +323,12 @@ public class GestorBd {
 		
 	}
 
-	public void actualitzar(Producte producte) throws SQLException {
+	public void actualitzar(Producte producte, String login) throws SQLException {
 		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
-		String sqlInserir="Update carro set disponibilitat disponibilitat=disponibilitat+1 where id=?";
+		String sqlInserir="Update carro set disponibilitat=disponibilitat+1 where id=? and propietari=?";
 		PreparedStatement insert=conn.prepareStatement(sqlInserir);
 		insert.setInt(1, producte.getId());
+		insert.setString(2, login);
 		
 		insert.executeUpdate();
 		

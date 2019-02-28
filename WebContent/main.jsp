@@ -22,7 +22,7 @@ text-align: center;
 	<table width="100%">
 			<!-- capcalera -->
 			
-			<tr bgcolor="grey"><th><b><s:text name="llistat.nom" /></b></th><th><b><s:text name="llistat.dispo" /></b></th><th><b><s:text name="llistat.descripcio" /></b></th><th><b><s:text name="llistat.preu" /></b></th> <th><b><s:text name="llistat.propietari" /></b></th><th><b><s:text name="llistat.afegir" /></b></th>
+			<tr bgcolor="grey"><th><b><s:text name="llistat.nom" /></b></th><th><b><s:text name="llistat.dispo" /></b></th><th><b><s:text name="llistat.descripcio" /></b></th><th><b><s:text name="llistat.preu" /></b></th> <th><b><s:text name="llistat.propietari" /></b></th> <th><b><s:text name="llistat.data" /></b></th> <th><b><s:text name="llistat.afegir" /></b></th>
 
 	<s:iterator value="productes" var="producte" status="rowstatus">
 	 			<!-- Pintem els parells diferent dels imparells -->
@@ -36,7 +36,7 @@ text-align: center;
             	<td align="center"><s:property value="descripcio"/></td>
             	<td align="center"><s:property value="preu"/></td>
             	<td align="center"><s:property value="propietari"/></td>
-            	<td align="center"><s:property value="%{getText('global.date',{data})}"/></td>
+            	<td align="center"><s:property value="data"/></td>
             	<td><s:checkbox name="checkboxes[%{#rowstatus.index}]" theme="simple" /></td>
             	<s:hidden value="%{productes.nom}"/>
             	

@@ -18,12 +18,12 @@ text-align: center;
 		<jsp:param name="menuActual" value="llistar.action"/>
 	</jsp:include>
 	<h1><s:text name="llistat.llistatCarro" /></h1>
-<s:form action="Comprar.action">	
+	
 	<s:form action="Eliminar.action">	
 	<table width="100%">
 			<!-- capcalera -->
 			
-			<tr bgcolor="grey"><th><b><s:text name="llistat.nom" /></b></th><th><b><s:text name="llistat.dispo" /></b></th><th><b><s:text name="llistat.descripcio" /></b></th><th><b><s:text name="llistat.preu" /></b></th> <th><b><s:text name="llistat.propietari" /></b></th><th><b><s:text name="llistat.afegir" /></b></th>
+			<tr bgcolor="grey"><th><b><s:text name="llistat.nom" /></b></th><th><b><s:text name="llistat.dispo" /></b></th><th><b><s:text name="llistat.descripcio" /></b></th><th><b><s:text name="llistat.preu" /></b></th> <%-- <th><b><s:text name="llistat.propietari" /></b></th> --%> <th><b><s:text name="llistat.afegir" /></b></th>
 
 	<s:iterator value="carro" var="car" status="rowstatus">
 	 			<!-- Pintem els parells diferent dels imparells -->
@@ -43,6 +43,8 @@ text-align: center;
     </s:iterator>
      <s:submit name="submit" key="global.Eliminar" align="center" /> 
    </s:form>
+   
+   <s:form action="Comprar.action">
     <s:submit name="submit" key="global.comprar" align="center" /> 
    </s:form>
    <!--   <a href="<s:url action="logOut"/>">Log out</a>-->

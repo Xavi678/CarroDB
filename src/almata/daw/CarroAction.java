@@ -65,10 +65,10 @@ public class CarroAction extends DBAction implements SessionAware{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		Usuari user=(Usuari) session.get("loginId");
 		setCheckboxes(checkboxes);
 		
-		printCheckBoxes();
+		printCheckBoxes(user.getLogin());
 		return SUCCESS;
 	}
 	
@@ -130,7 +130,7 @@ private void eliminar(String login) throws SQLException {
 		
 	}
 
-private void printCheckBoxes() throws SQLException {
+private void printCheckBoxes(String login) throws SQLException {
 		
 		if(checkboxes!=null){
 		Iterator<Map.Entry<Integer, Boolean>> entries = checkboxes.entrySet().iterator();
@@ -141,7 +141,7 @@ private void printCheckBoxes() throws SQLException {
 		    	int pos=entry.getKey();
 		    	Producte p=db.obtenirProductealCarro(productes.get(pos));
 		    	if(p!=null) {
-		    		db.actualitzar(p);
+		    		db.actualitzar(p,login);
 		    		
 		    	}else {
 		    		db.insertCarro(productes.get(pos));
