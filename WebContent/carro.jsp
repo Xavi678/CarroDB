@@ -18,7 +18,7 @@ text-align: center;
 		<jsp:param name="menuActual" value="llistar.action"/>
 	</jsp:include>
 	<h1><s:text name="llistat.llistatCarro" /></h1>
-
+<s:form action="Comprar.action">	
 	<table width="100%">
 			<!-- capcalera -->
 			
@@ -41,8 +41,8 @@ text-align: center;
             	
     </s:iterator>
    
-    <%--  <s:submit name="submit" key="global.afegir" align="center" /> --%>
-   
+    <s:submit name="submit" key="global.comprar" align="center" /> 
+   </s:form>
    <!--   <a href="<s:url action="logOut"/>">Log out</a>-->
 	
 	

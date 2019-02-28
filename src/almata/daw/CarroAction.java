@@ -87,6 +87,19 @@ public class CarroAction extends DBAction implements SessionAware{
 		
 	}
 	
+	public String buy() throws SQLException {
+		
+		if(db==null) {
+			this.loadDB();
+		}
+		
+		Usuari user=(Usuari) session.get("loginId");
+		
+		db.Comprar(user);
+		
+		return SUCCESS;
+		
+	}
 private void printCheckBoxes() throws SQLException {
 		
 		if(checkboxes!=null){

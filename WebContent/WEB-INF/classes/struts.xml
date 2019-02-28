@@ -45,6 +45,10 @@
       <result name="success">carro.jsp</result>
       </action>
       
+      <action name="Comprar" class="almata.daw.CarroAction" method="buy">
+      <result name="success">carro.jsp</result>
+      </action>
+      
    </package>
 
 </struts>

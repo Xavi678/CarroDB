@@ -349,6 +349,15 @@ public class GestorBd {
 		
 		
 	}
+
+	public void Comprar(Usuari user) throws SQLException {
+		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
+		String sql="delete * from Carro where propietari=?";
+		
+		PreparedStatement delete=conn.prepareStatement(sql);
+		delete.setString(1, user.getLogin());
+		delete.executeUpdate();
+	}
 	
 	
 
