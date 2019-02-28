@@ -42,6 +42,7 @@
       </action>
       
       <action name="llistarCarro" class="almata.daw.CarroAction" method="llistar">
+      <result name="success">carro.jsp</result>
       </action>
       
    </package>

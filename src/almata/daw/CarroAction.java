@@ -6,12 +6,25 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.SessionAware;
 
 
-public class CarroAction extends DBAction{
+
+public class CarroAction extends DBAction implements SessionAware{
 	
 	private ArrayList<Producte> productes= new ArrayList<Producte>();
 	private Map<Integer, Boolean> checkboxes;
+	private Map<String, Object> session;
+	private ArrayList<Producte> carro;
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
 
 	public Collection<Producte> getProductes() {
 		return productes;
@@ -31,6 +44,16 @@ public class CarroAction extends DBAction{
 	
 
 	
+	
+
+	public ArrayList<Producte> getCarro() {
+		return carro;
+	}
+
+	public void setCarro(ArrayList<Producte> carro) {
+		this.carro = carro;
+	}
+
 	public String afegir() throws SQLException {
 		if(db==null) {
 			this.loadDB();
@@ -47,6 +70,21 @@ public class CarroAction extends DBAction{
 		
 		printCheckBoxes();
 		return SUCCESS;
+	}
+	
+	public String llistar() throws SQLException {
+		if(db==null) {
+			this.loadDB();
+		}
+		
+		Usuari user=(Usuari) session.get("loginId");
+		
+		carro=db.obtenirCarroperUsuari(user);
+		
+		
+		
+		return SUCCESS;
+		
 	}
 	
 private void printCheckBoxes() throws SQLException {

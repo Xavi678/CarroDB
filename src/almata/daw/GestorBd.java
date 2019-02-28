@@ -330,6 +330,25 @@ public class GestorBd {
 		insert.executeUpdate();
 		
 	}
+
+	public ArrayList<Producte> obtenirCarroperUsuari(Usuari user) throws SQLException {
+		ArrayList<Producte> carro=new ArrayList<Producte>();
+		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
+		String sql="Select * from Carro where propietari=?";
+		
+		PreparedStatement select=conn.prepareStatement(sql);
+		select.setString(1, user.getLogin());
+		
+		ResultSet rs=select.executeQuery();
+		
+		while(rs.next()) {
+			carro.add(new Producte(rs.getString("nom"),rs.getInt("disponibilitat"),rs.getString("descripcio"),rs.getInt("preu")));
+		}
+		
+		return carro;
+		
+		
+	}
 	
 	
 

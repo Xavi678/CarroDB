@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<validators>
+
+<validator type="requiredstring">
+    <param name="fieldname">newUser.nom</param>
+     <message key="error.nom"/>
+ </validator>
+ 
+ <validator type="requiredstring">
+    <param name="fieldname">newUser.disponibilitat</param>
+     <message key="error.dispo"/>
+ </validator>
+ 
+ <validator type="requiredstring">
+    <param name="fieldname">newUser.descripcio</param>
+     <message key="error.desc"/>
+ </validator>
+ 
+  <validator type="requiredstring">
+    <param name="fieldname">newUser.preu</param>
+     <message key="error.preu"/>
+ </validator>
+ 
+  <validator type="int">
+         <param name="fieldName">newUser.preu</param>
+         <param name="min">1</param>
+         <param name="max">1000</param>
+         <message key="error.int"/>
+     </validator>
+     
+       <validator type="int">
+         <param name="fieldName">newUser.dispo</param>
+         <param name="min">1</param>
+         <param name="max">1000</param>
+         <message key="error.int"/>
+     </validator>
+ 
+
+</validators>

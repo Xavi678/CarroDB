@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<s:actionerror/>
 <s:form action="LoginUser">
  
       <s:textfield key="newUser.login" name="usuari.login"/>
