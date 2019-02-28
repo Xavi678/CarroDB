@@ -25,28 +25,48 @@
       <result name="success" type="redirectAction">llistar</result>
       <result name="login">login.jsp</result>
       </action>
+      
       <action name="llistar" class="almata.daw.LlistarAction" method="llistarProductes">
+      <interceptor-ref name="loginStack"/>
+        <result name="login">login.jsp</result>
       <result name="success">main.jsp</result>
       </action>
       
       <action name="logOut" class="almata.daw.LoginAction" method="logOut">
+     
       <result name="success">login.jsp</result>
       </action>
       
       <action name="nouProducte" class="almata.daw.nouProducte" method="nouProduct">
+      <interceptor-ref name="loginStack"/>
+        <result name="login">login.jsp</result>
       <result name="success" type="redirectAction">llistar</result>
       </action>
       
       <action name="afegirCarro" class="almata.daw.CarroAction" method="afegir">
+      
+      <interceptor-ref name="loginStack"/>
+        <result name="login">login.jsp</result>
       <result name="success" type="redirectAction">llistarCarro</result>
       </action>
       
       <action name="llistarCarro" class="almata.daw.CarroAction" method="llistar">
+      <interceptor-ref name="loginStack"/>
+        <result name="login">login.jsp</result>
       <result name="success">carro.jsp</result>
       </action>
       
       <action name="Comprar" class="almata.daw.CarroAction" method="buy">
+      <interceptor-ref name="loginStack"/>
+        <result name="login">login.jsp</result>
       <result name="success">carro.jsp</result>
+      </action>
+      
+        <action name="Eliminar" class="almata.daw.CarroAction" method="eliminar">
+        <interceptor-ref name="loginStack"/>
+        <result name="login">login.jsp</result>
+      <result name="success">carro.jsp</result>
+       
       </action>
       
    </package>

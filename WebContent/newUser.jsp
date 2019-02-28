@@ -18,6 +18,7 @@
 	 <s:textfield key="newUser.dispo" name="producte.disponibilitat" />
 	 <s:textfield key="newUser.descripcio"  name="producte.descripcio" />
 	 <s:textfield key="newUser.preu"  name="producte.preu" />
+	 <s:textfield key="newUser.data" name="producte.data"  value="%{getText('global.date',{producte.data})}" />
 	 
      
       <s:submit name="submit" key="global.save" align="center" />

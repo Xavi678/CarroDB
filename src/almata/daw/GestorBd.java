@@ -254,7 +254,7 @@ public class GestorBd {
 		ResultSet rs=selectP.executeQuery();
 		while(rs.next()) {
 			
-			productes.add(new Producte(rs.getInt("id"),rs.getString("nom"),rs.getInt("disponibilitat"),rs.getString("descripcio"),rs.getInt("preu"),rs.getString("propietari")));
+			productes.add(new Producte(rs.getInt("id"),rs.getString("nom"),rs.getInt("disponibilitat"),rs.getString("descripcio"),rs.getInt("preu"),rs.getString("propietari"),rs.getString("data")));
 			
 		}
 		
@@ -263,13 +263,15 @@ public class GestorBd {
 
 	public void inserirProducte(Producte producte) throws SQLException {
 		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
-		String sqlInserir="insert into productes(nom,disponibilitat,descripcio,preu,propietari) Values(?,?,?,?,?)";
+		String sqlInserir="insert into productes(nom,disponibilitat,descripcio,preu,propietari,data) Values(?,?,?,?,?,?)";
 		PreparedStatement insert=conn.prepareStatement(sqlInserir);
 		insert.setString(1, producte.getNom());
 		insert.setInt(2, producte.getDisponibilitat());
 		insert.setString(3, producte.getDescripcio());
 		insert.setInt(4, producte.getPreu());
 		insert.setString(5, producte.getPropietari());
+		insert.setString(6, producte.getData());
+		
 		insert.executeUpdate();
 	}
 
@@ -349,6 +351,25 @@ public class GestorBd {
 		
 		
 	}
+	
+	public ArrayList<Producte> obtenirCarroperUsuariId(Usuari user) throws SQLException {
+		ArrayList<Producte> carro=new ArrayList<Producte>();
+		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
+		String sql="Select * from Carro where propietari=?";
+		
+		PreparedStatement select=conn.prepareStatement(sql);
+		select.setString(1, user.getLogin());
+		
+		ResultSet rs=select.executeQuery();
+		
+		while(rs.next()) {
+			carro.add(new Producte(rs.getInt("id"),rs.getString("nom"),rs.getInt("disponibilitat"),rs.getString("descripcio"),rs.getInt("preu"),rs.getString("propietari")));
+		}
+		
+		return carro;
+		
+		
+	}
 
 	public void Comprar(Usuari user) throws SQLException {
 		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
@@ -357,6 +378,17 @@ public class GestorBd {
 		PreparedStatement delete=conn.prepareStatement(sql);
 		delete.setString(1, user.getLogin());
 		delete.executeUpdate();
+	}
+
+	public void eliminar(Producte producte,String login) throws SQLException {
+		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
+		String sql="delete * from Carro where id=? and propietari=?";
+		
+		PreparedStatement delete=conn.prepareStatement(sql);
+		delete.setInt(1, producte.getId());
+		delete.setString(2, login);
+		delete.executeUpdate();
+		
 	}
 	
 	

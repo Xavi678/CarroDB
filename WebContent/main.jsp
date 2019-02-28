@@ -36,6 +36,7 @@ text-align: center;
             	<td align="center"><s:property value="descripcio"/></td>
             	<td align="center"><s:property value="preu"/></td>
             	<td align="center"><s:property value="propietari"/></td>
+            	<td align="center"><s:property value="%{getText('global.date',{data})}"/></td>
             	<td><s:checkbox name="checkboxes[%{#rowstatus.index}]" theme="simple" /></td>
             	<s:hidden value="%{productes.nom}"/>
             	

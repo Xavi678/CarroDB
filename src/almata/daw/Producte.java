@@ -8,6 +8,7 @@ public class Producte {
 	private String descripcio;
 	private int preu;
 	private String propietari;
+	private String data;
 	
 	
 	public Producte() {
@@ -15,6 +16,33 @@ public class Producte {
 	}
 	
 	
+	
+	public Producte(int id, String nom, int disponibilitat, String descripcio, int preu, String propietari,
+			String data) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.disponibilitat = disponibilitat;
+		this.descripcio = descripcio;
+		this.preu = preu;
+		this.propietari = propietari;
+		this.data = data;
+	}
+
+
+
+	public String getData() {
+		return data;
+	}
+
+
+
+	public void setData(String data) {
+		this.data = data;
+	}
+
+
+
 	public Producte(String nom, int disponibilitat, String descripcio, int preu) {
 		super();
 		

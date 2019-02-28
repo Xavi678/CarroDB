@@ -18,6 +18,7 @@ disponibilitat int not null,
 descripcio varchar(100) not null,
 preu int not null,
 propietari varchar(100) not null,
+data varchar(100) not null,
 
 foreign key(propietari) references usuaris(login)
  on update cascade

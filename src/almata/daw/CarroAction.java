@@ -100,6 +100,36 @@ public class CarroAction extends DBAction implements SessionAware{
 		return SUCCESS;
 		
 	}
+	
+	public String Eliminar() throws SQLException {
+		if(db==null) {
+			this.loadDB();
+		}
+
+		Usuari user=(Usuari) session.get("loginId");
+		
+		productes=db.obtenirCarroperUsuariId(user);
+		setCheckboxes(checkboxes);
+		eliminar(user.getLogin());
+		return SUCCESS;
+		
+	}
+	
+private void eliminar(String login) throws SQLException {
+	if(checkboxes!=null){
+		Iterator<Map.Entry<Integer, Boolean>> entries = checkboxes.entrySet().iterator();
+		while (entries.hasNext()) {
+		    Map.Entry<Integer, Boolean> entry = entries.next();
+		    System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+		    if(entry.getValue()==true) {
+		    	int pos=entry.getKey();
+		    	db.eliminar(productes.get(pos),login);
+		    }
+		}
+		}
+		
+	}
+
 private void printCheckBoxes() throws SQLException {
 		
 		if(checkboxes!=null){

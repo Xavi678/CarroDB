@@ -19,6 +19,7 @@ text-align: center;
 	</jsp:include>
 	<h1><s:text name="llistat.llistatCarro" /></h1>
 <s:form action="Comprar.action">	
+	<s:form action="Eliminar.action">	
 	<table width="100%">
 			<!-- capcalera -->
 			
@@ -40,7 +41,8 @@ text-align: center;
             	<s:hidden value="%{carro.nom}"/>
             	
     </s:iterator>
-   
+     <s:submit name="submit" key="global.Eliminar" align="center" /> 
+   </s:form>
     <s:submit name="submit" key="global.comprar" align="center" /> 
    </s:form>
    <!--   <a href="<s:url action="logOut"/>">Log out</a>-->
