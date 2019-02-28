@@ -38,7 +38,10 @@
       </action>
       
       <action name="afegirCarro" class="almata.daw.CarroAction" method="afegir">
-      <result name="success">carro.jsp</result>
+      <result name="success" type="redirectAction">llistarCarro</result>
+      </action>
+      
+      <action name="llistarCarro" class="almata.daw.CarroAction" method="llistar">
       </action>
       
    </package>

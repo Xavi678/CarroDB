@@ -6,15 +6,22 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<style>
+h1{
+
+text-align: center;
+}
+</style>
 </head>
 <body>
 	<jsp:include page="menu.jsp">
 		<jsp:param name="menuActual" value="llistar.action"/>
 	</jsp:include>
+	<h1><s:text name="llistat.llistatProductes" /></h1>
 <s:form action="afegirCarro.action">	
 	<table width="100%">
 			<!-- capcalera -->
-			<tr><th colspan="4"><s:text name="llistat.llistatProductes" /></th></tr>
+			
 			<tr bgcolor="grey"><th><b><s:text name="llistat.nom" /></b></th><th><b><s:text name="llistat.dispo" /></b></th><th><b><s:text name="llistat.descripcio" /></b></th><th><b><s:text name="llistat.preu" /></b></th> <th><b><s:text name="llistat.propietari" /></b></th><th><b><s:text name="llistat.afegir" /></b></th>
 
 	<s:iterator value="productes" var="producte" status="rowstatus">
@@ -34,7 +41,7 @@
             	
     </s:iterator>
    
-     <s:submit name="submit" key="global.save" align="center" />
+     <s:submit name="submit" key="global.afegir" align="center" />
     </s:form>
    <!--   <a href="<s:url action="logOut"/>">Log out</a>-->
 	

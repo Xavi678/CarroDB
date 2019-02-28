@@ -309,13 +309,14 @@ public class GestorBd {
 
 	public void insertCarro(Producte producte) throws SQLException {
 		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
-		String sqlInserir="insert into carro(nom,disponibilitat,descripcio,preu,propietari) Values(?,?,?,?,?)";
+		String sqlInserir="insert into carro(id,nom,disponibilitat,descripcio,preu,propietari) Values(?,?,?,?,?,?)";
 		PreparedStatement insert=conn.prepareStatement(sqlInserir);
-		insert.setString(1, producte.getNom());
-		insert.setInt(2, producte.getDisponibilitat());
-		insert.setString(3, producte.getDescripcio());
-		insert.setInt(4, producte.getPreu());
-		insert.setString(5, producte.getPropietari());
+		insert.setInt(1, producte.getId());
+		insert.setString(2, producte.getNom());
+		insert.setInt(3, producte.getDisponibilitat());
+		insert.setString(4, producte.getDescripcio());
+		insert.setInt(5, producte.getPreu());
+		insert.setString(6, producte.getPropietari());
 		insert.executeUpdate();
 		
 	}
