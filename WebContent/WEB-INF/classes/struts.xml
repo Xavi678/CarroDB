@@ -33,7 +33,7 @@
       </action>
       
       <action name="logOut" class="almata.daw.LoginAction" method="logOut">
-     
+     <result name="input">login.jsp</result>
       <result name="success">login.jsp</result>
       </action>
       
@@ -41,6 +41,7 @@
       <interceptor-ref name="loginStack"/>
      
         <result name="login">login.jsp</result>
+        <result name="input">login.jsp</result>
       <result name="success" type="redirectAction">llistar</result>
       </action>
       
