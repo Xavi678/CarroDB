@@ -6,7 +6,7 @@ import java.util.Map;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 
-public class nouProducte extends DBAction implements SessionAware {
+public class NouProducte extends DBAction implements SessionAware {
 	
 	private Producte producte;
 	
