@@ -39,6 +39,10 @@ private SessionMap<String, Object> session;
 		
 		Usuari propietari=(Usuari) session.get("loginId");
 		
+		String data=producte.getData();
+		
+		String novaDate=data.replace("/", " ");
+		producte.setData(novaDate);
 		this.producte.setPropietari(propietari.getLogin());
 		
 		db.inserirProducte(this.producte);

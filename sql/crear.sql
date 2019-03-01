@@ -40,11 +40,31 @@ foreign key(propietari) references usuaris(login)
     on delete cascade
    , foreign key(id) references productes(id) on update cascade on delete cascade)ENGINE=INNODB;
    
- /*  delimiter |
+ delimiter |
 
-CREATE TRIGGER testref BEFORE DELETE ON carro
+CREATE TRIGGER testref AFTER insert ON carro
   FOR EACH ROW
   BEGIN   
-    UPDATE productes SET productes.disponibilitat = productes.disponibilitat - old.disponibilitat WHERE productes.id = old.id;
+    UPDATE productes SET productes.disponibilitat = productes.disponibilitat - 1 WHERE productes.id = new.id;
   END;
-|*/
+
+
+
+CREATE TRIGGER testref2 AFTER update ON carro
+  FOR EACH ROW
+  BEGIN   
+    UPDATE productes SET productes.disponibilitat = productes.disponibilitat -1 WHERE productes.id = new.id;
+  END;
+  
+  
+  
+ 
+CREATE TRIGGER borrar AFTER delete ON carro
+  FOR EACH ROW
+  BEGIN   
+    UPDATE productes SET productes.disponibilitat = productes.disponibilitat +old.disponibilitat WHERE productes.id = old.id;
+  END;
+  |
+  
+  delimiter ;
+ 

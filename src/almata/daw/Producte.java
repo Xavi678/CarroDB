@@ -9,7 +9,7 @@ public class Producte {
 	private int preu;
 	private String propietari;
 	private String data;
-	
+
 	
 	public Producte() {
 		
@@ -123,6 +123,9 @@ public class Producte {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+
+
 	
 	
 	

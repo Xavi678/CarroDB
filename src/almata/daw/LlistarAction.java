@@ -30,6 +30,12 @@ public class LlistarAction  extends DBAction implements SessionAware {
 	
 	private Collection<Producte> productes;
 	
+	private int minim;
+	private int maxim;
+	
+	private String minDate;
+	private String maxDate;
+	
 
 	
 	
@@ -86,7 +92,7 @@ public class LlistarAction  extends DBAction implements SessionAware {
 		this.usuaris = usuaris;
 	}
 	
-	public String llistarProductes() {
+	public String llistarProductes() throws SQLException {
 
 		// Aquí hem d'agafar de session la llista d'usuaris
 		// En cas que no existeixi el crearem i el posarem 
@@ -127,17 +133,64 @@ public class LlistarAction  extends DBAction implements SessionAware {
 			this.loadDB();
 		}
 		
+		if(maxim==0 && minim==0 && maxDate==null && minDate==null) {
 		try {
 			productes=db.obtenirProductes();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		}else if(maxim!=0) {
+			productes=db.obtenirProductesFiltrats(maxim,minim);
+		}else if(minDate!=null && maxDate!=null){
+			
+			
+			
+			minDate=minDate.replace("/", " ");
+			maxDate=maxDate.replace("/", " ");
+			productes=db.obtenirProductesPerData(minDate,maxDate);
+			
+		}
+		
 		
 		
 		
 		
 		return SUCCESS;
+	}
+	
+	
+
+	public int getMaxim() {
+		return maxim;
+	}
+
+	public void setMaxim(int maxim) {
+		this.maxim = maxim;
+	}
+
+	public int getMinim() {
+		return minim;
+	}
+
+	public void setMinim(int minim) {
+		this.minim = minim;
+	}
+
+	public String getMaxDate() {
+		return maxDate;
+	}
+
+	public void setMaxDate(String maxDate) {
+		this.maxDate = maxDate;
+	}
+
+	public String getMinDate() {
+		return minDate;
+	}
+
+	public void setMinDate(String minDate) {
+		this.minDate = minDate;
 	}
 
 	

@@ -254,8 +254,9 @@ public class GestorBd {
 		ResultSet rs=selectP.executeQuery();
 		while(rs.next()) {
 			
+			if(rs.getInt("disponibilitat")!=0) {
 			productes.add(new Producte(rs.getInt("id"),rs.getString("nom"),rs.getInt("disponibilitat"),rs.getString("descripcio"),rs.getInt("preu"),rs.getString("propietari"),rs.getString("data")));
-			
+			}
 		}
 		
 		return productes;
@@ -391,6 +392,41 @@ public class GestorBd {
 		delete.setString(2, login);
 		delete.executeUpdate();
 		
+	}
+
+	public Collection<Producte> obtenirProductesFiltrats(int maxim, int minim) throws SQLException {
+		Collection<Producte> productes= new ArrayList<Producte>();
+		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
+		String sql="select * from productes where preu between ? and ? order by preu ASC";
+		
+		PreparedStatement select=conn.prepareStatement(sql);
+		
+		select.setInt(1,minim);
+		select.setInt(2,maxim);
+		ResultSet rs=select.executeQuery();
+		
+		while(rs.next()) {
+			productes.add(new Producte(rs.getInt("id"),rs.getString("nom"),rs.getInt("disponibilitat"),rs.getString("descripcio"),rs.getInt("preu"),rs.getString("propietari"),rs.getString("data")));
+		}
+		return productes;
+	}
+
+	public Collection<Producte> obtenirProductesPerData(String minDate, String maxDate) throws SQLException {
+		
+		Collection<Producte> productes= new ArrayList<Producte>();
+		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
+		String sql="select * from productes where STR_TO_DATE(data,'%d %m %Y') between STR_TO_DATE(?,'%d %m %Y') and STR_TO_DATE(?,'%d %m %Y') ";
+		
+		PreparedStatement select=conn.prepareStatement(sql);
+		
+		select.setString(1,minDate);
+		select.setString(2,maxDate);
+		ResultSet rs=select.executeQuery();
+		
+		while(rs.next()) {
+			productes.add(new Producte(rs.getInt("id"),rs.getString("nom"),rs.getInt("disponibilitat"),rs.getString("descripcio"),rs.getInt("preu"),rs.getString("propietari"),rs.getString("data")));
+		}
+		return productes;
 	}
 	
 	

@@ -41,7 +41,7 @@
       <interceptor-ref name="loginStack"/>
      
         <result name="login">login.jsp</result>
-        <result name="input">login.jsp</result>
+        <result name="input">newUser.jsp</result>
       <result name="success" type="redirectAction">llistar</result>
       </action>
       
@@ -70,6 +70,8 @@
       <result name="success" type="redirectAction">llistarCarro</result>
        
       </action>
+      
+      
       
    </package>
 
