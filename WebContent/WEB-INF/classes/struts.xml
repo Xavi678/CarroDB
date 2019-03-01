@@ -71,6 +71,12 @@
        
       </action>
       
+      <action name="perfil" class="almata.daw.PerfilAction" method="perfil">
+       <interceptor-ref name="loginStack"/>
+        <result name="login">login.jsp</result>
+      <result name="success">perfil.jsp</result>
+      </action>
+      
       
       
    </package>

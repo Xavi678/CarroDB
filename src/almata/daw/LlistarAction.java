@@ -133,7 +133,7 @@ public class LlistarAction  extends DBAction implements SessionAware {
 			this.loadDB();
 		}
 		
-		if(maxim==0 && minim==0 && maxDate==null && minDate==null) {
+		if(maxim==0 && minim==0 && (maxDate==null || minDate==null || minDate.isEmpty() || maxDate.isEmpty())) {
 		try {
 			productes=db.obtenirProductes();
 		} catch (SQLException e) {
@@ -142,13 +142,13 @@ public class LlistarAction  extends DBAction implements SessionAware {
 		}
 		}else if(maxim!=0) {
 			productes=db.obtenirProductesFiltrats(maxim,minim);
-		}else if(minDate!=null && maxDate!=null){
+		}else if(minDate!=null && maxDate!=null && !minDate.isEmpty() && !maxDate.isEmpty()){
 			
 			
 			
-			minDate=minDate.replace("/", " ");
-			maxDate=maxDate.replace("/", " ");
-			productes=db.obtenirProductesPerData(minDate,maxDate);
+			String minDateTemp=minDate.replace("/", " ");
+			String maxDateTemp=maxDate.replace("/", " ");
+			productes=db.obtenirProductesPerData(minDateTemp,maxDateTemp);
 			
 		}
 		
