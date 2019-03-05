@@ -12,9 +12,8 @@
      <message key="error.password"/>
  </validator>
  
-<!--   <validator type="requiredstring"> -->
-<!--     <param name="fieldname">usuari.password2</param> -->
-<!--      <message key="error.password"/> -->
-<!--  </validator> -->
+  <validator type="requiredstring"> 
+     <param name="fieldname">usuari.password2</param>
+     <message key="error.password"/> 
+  </validator> 
  </validators>
- 

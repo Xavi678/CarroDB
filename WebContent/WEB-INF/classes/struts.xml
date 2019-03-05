@@ -6,7 +6,7 @@
 <struts>
 
    <constant name="struts.custom.i18n.resources" value="global" />
-   <constant name="struts.devMode" value="true" />
+   <constant name="struts.devMode" value="false" />
    
    <package name="usuaris" extends="struts-default">
    
@@ -81,6 +81,12 @@
        <interceptor-ref name="loginStack"/>
         <result name="login">login.jsp</result>
       <result name="success" type="redirectAction">perfil</result>
+      </action>
+      
+      <action name="Register" class="almata.daw.Registrar" method="registrar">
+      
+        <result name="input">register.jsp</result>
+      <result name="success" >register.jsp</result>
       </action>
       
    </package>

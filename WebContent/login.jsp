@@ -9,13 +9,13 @@
 </head>
 <body>
 <s:actionerror/>
-<s:form action="LoginUser">
+<s:form action="LoginUser.action">
  
       <s:textfield key="newUser.login" name="usuari.login"/>
       <s:textfield key="newUser.passwd" type="password" name="usuari.password"/>
    
       <s:submit name="submit" key="global.save" align="center" />
    </s:form>
-
+<a href="register.jsp">Registrar-se</a>
 </body>
 </html>
