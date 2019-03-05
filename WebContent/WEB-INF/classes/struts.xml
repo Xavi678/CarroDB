@@ -77,7 +77,11 @@
       <result name="success">perfil.jsp</result>
       </action>
       
-      
+      <action name="canviar" class="almata.daw.PerfilAction" method="canviar">
+       <interceptor-ref name="loginStack"/>
+        <result name="login">login.jsp</result>
+      <result name="success" type="redirectAction">perfil</result>
+      </action>
       
    </package>
 

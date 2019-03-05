@@ -428,6 +428,16 @@ public class GestorBd {
 		}
 		return productes;
 	}
+
+	public void canviar(String password,String login) throws SQLException {
+		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
+		String sql="update usuaris set passwd=? where login=?";
+		PreparedStatement update=conn.prepareStatement(sql);
+		update.setString(1, password);
+		update.setString(2, login);
+		
+		update.executeUpdate();
+	}
 	
 	
 
