@@ -1,15 +1,17 @@
-DROP DATABASE IF EXISTS CarroCompra;
+DROP DATABASE IF EXISTS CarroCompra1;
+CREATE DATABASE CarroCompra1;
+use CarroCompra1;
 DROP TABLE IF EXISTS Productes;
 DROP TABLE IF EXISTS usuaris;
 DROP TABLE IF EXISTS CARRO;
 
-CREATE DATABASE CarroCompra;
 
-use CarroCompra;
+
+
 
 CREATE TABLE usuaris(
 login varchar(100) primary key not null,
-password varchar(100) not null));
+password varchar(100) not null);
 
 CREATE TABLE Productes(
 id int not null primary key auto_increment,
