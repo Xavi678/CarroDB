@@ -14,10 +14,13 @@
      <message key="error.desc"/>
  </validator>
  
- <validator type="requiredstring">
-    <param name="fieldname">producte.data</param>
-     <message key="error.data"/>
- </validator> 
+ 
+ 
+   <field name="producte.data">
+      <field-validator type="required">
+          <message key="error.data"/>
+      </field-validator>
+  </field>
  
   <validator type="int">
          <param name="fieldName">producte.preu</param>

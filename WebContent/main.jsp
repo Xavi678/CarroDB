@@ -19,13 +19,14 @@ text-align: center;
 	</jsp:include>
 	<h1><s:text name="llistat.llistatProductes" /></h1>
 	<s:form action="llistar.action">
-	<s:textfield key="preu.minim" name="minim"></s:textfield>
+ 	<s:textfield key="preu.minim"  name="minim"></s:textfield> 
 	<s:textfield key="preu.maxim" name="maxim"></s:textfield>
+
 	<s:submit  key="global.filter" align="center"></s:submit>
 	</s:form>
 	<s:form action="llistar.action">
-	<s:textfield key="data.minima" name="minDate" placeholder="dd/mm/yyyy"></s:textfield>
-	<s:textfield key="data.maxima" name="maxDate"  placeholder="dd/mm/yyyy"></s:textfield>
+	<s:textfield key="data.minima" name="minDate" placeholder="dd/MM/yyyy" value="%{getText('global.date',{minDate})}"></s:textfield>
+	<s:textfield key="data.maxima" name="maxDate"  placeholder="dd/MM/yyyy" value="%{getText('global.date',{maxDate})}"></s:textfield>
 	<s:submit  key="global.filter" align="center"></s:submit>
 	</s:form>
 <s:form action="afegirCarro.action">	
