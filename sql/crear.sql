@@ -64,7 +64,9 @@ CREATE TRIGGER testref2 AFTER update ON carro
 CREATE TRIGGER borrar AFTER delete ON carro
   FOR EACH ROW
   BEGIN   
+	  IF @TRIGGER_ENABLED=0 THEN
     UPDATE productes SET productes.disponibilitat = productes.disponibilitat +old.disponibilitat WHERE productes.id = old.id;
+    	END IF;
   END;
   |
   

@@ -254,9 +254,9 @@ public class GestorBd {
 		ResultSet rs=selectP.executeQuery();
 		while(rs.next()) {
 			
-			if(rs.getInt("disponibilitat")!=0) {
+			
 			productes.add(new Producte(rs.getInt("id"),rs.getString("nom"),rs.getInt("disponibilitat"),rs.getString("descripcio"),rs.getInt("preu"),rs.getString("propietari"),rs.getString("data")));
-			}
+			
 		}
 		
 		return productes;
@@ -376,6 +376,9 @@ public class GestorBd {
 
 	public void Comprar(Usuari user) throws SQLException {
 		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
+		String sqltrigger="SET @TRIGGER_ENABLED=1;";
+		PreparedStatement pr=conn.prepareStatement(sqltrigger);
+		pr.executeUpdate();
 		String sql="delete  from Carro where propietari=?";
 		
 		PreparedStatement delete=conn.prepareStatement(sql);
@@ -385,6 +388,9 @@ public class GestorBd {
 
 	public void eliminar(Producte producte,String login) throws SQLException {
 		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
+		String sqltrigger="SET @TRIGGER_ENABLED=0;";
+		PreparedStatement pr=conn.prepareStatement(sqltrigger);
+		pr.executeUpdate();
 		String sql="delete from Carro where id=? and propietari=?";
 		
 		PreparedStatement delete=conn.prepareStatement(sql);
