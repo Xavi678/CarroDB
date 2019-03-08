@@ -2,15 +2,17 @@
 <!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
  "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
 <validators>
-   <field name="minDate">
-      <field-validator type="required">
-          <message key="error.data"/>
-      </field-validator>
-  </field>
-  
-    <field name="maxDate">
-      <field-validator type="required">
-          <message key="error.data"/>
-      </field-validator>
-  </field>
-  </validators>
+
+       <validator type="regex">
+    <param name="fieldname">maxDate</param>
+    <param name="regex"><![CDATA[^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$]]></param>
+    <message key="error.formatDate"></message>
+</validator>
+
+       <validator type="regex">
+    <param name="fieldname">minDate</param>
+    <param name="regex"><![CDATA[^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$]]></param>
+    <message key="error.formatDate"></message>
+</validator>
+
+</validators>

@@ -415,7 +415,7 @@ public class GestorBd {
 		
 		Collection<Producte> productes= new ArrayList<Producte>();
 		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
-		String sql="select * from productes where STR_TO_DATE(data,'%d %m %Y') between STR_TO_DATE(?,'%d %m %Y') and STR_TO_DATE(?,'%d %m %Y') ";
+		String sql="select * from productes where STR_TO_DATE(data,'%d %m %Y') between STR_TO_DATE(?,'%d %m %Y') and STR_TO_DATE(?,'%d %m %Y') ORDER by STR_TO_DATE(data,'%d %m %Y') ASC ";
 		
 		PreparedStatement select=conn.prepareStatement(sql);
 		
