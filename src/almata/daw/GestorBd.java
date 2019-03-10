@@ -209,7 +209,7 @@ public class GestorBd {
 		Usuari userFound = null;
 		
 		while(rs.next()) {
-			userFound = new Usuari(rs.getString("login"),rs.getString("passwd"));
+			userFound = new Usuari(rs.getString("login"),rs.getString("password"));
 			
 
 				
