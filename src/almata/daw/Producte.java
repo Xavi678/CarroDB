@@ -79,6 +79,21 @@ public class Producte {
 	
 	
 	
+	
+
+
+
+	public Producte(int id, String nom, int disponibilitat, String descripcio, int preu) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.disponibilitat = disponibilitat;
+		this.descripcio = descripcio;
+		this.preu = preu;
+	}
+
+
+
 	public String getNom() {
 		return nom;
 	}

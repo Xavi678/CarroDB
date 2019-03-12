@@ -122,8 +122,8 @@ private void eliminar(String login) throws SQLException {
 		    Map.Entry<Integer, Boolean> entry = entries.next();
 		    System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
 		    if(entry.getValue()==true) {
-		    	int pos=entry.getKey();
-		    	db.eliminar(productes.get(pos),login);
+		    	
+		    	db.eliminar(entry.getKey(),login);
 		    }
 		}
 		}

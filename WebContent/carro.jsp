@@ -37,7 +37,7 @@ text-align: center;
             	<td align="center"><s:property value="descripcio"/></td>
             	<td align="center"><s:property value="preu"/></td>
 <%--             	<td align="center"><s:property value="propietari"/></td> --%>
-            	<td><s:checkbox name="checkboxes[%{#rowstatus.index}]" theme="simple" /></td>
+            	<td><s:checkbox name="checkboxes[%{id}]" theme="simple" /></td>
             	<s:hidden value="%{carro.nom}"/>
             	
     </s:iterator>
