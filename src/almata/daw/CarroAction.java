@@ -138,13 +138,14 @@ private void printCheckBoxes(String login) throws SQLException {
 		    Map.Entry<Integer, Boolean> entry = entries.next();
 		    System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
 		    if(entry.getValue()==true) {
-		    	int pos=entry.getKey();
-		    	Producte p=db.obtenirProductealCarro(productes.get(pos),login);
+		    	//int pos=entry.getKey();
+		    	Producte p=db.obtenirProductealCarro(entry.getKey(),login);
 		    	if(p!=null) {
 		    		db.actualitzar(p,login);
 		    		
 		    	}else {
-		    		db.insertCarro(productes.get(pos),login);
+		    		Producte p1=db.obtenirProducteperId(entry.getKey());
+		    		db.insertCarro(p1,login);
 		    	}
 		    }
 		}

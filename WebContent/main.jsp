@@ -48,10 +48,10 @@ text-align: center;
             	<td align="center"><s:property value="preu"/></td>
             	<td align="center"><s:property value="propietari"/></td>
             	<td align="center"><s:property value="data"/></td>
-            	<s:if test="%{# producte.disponibilitat==0}"><td><s:checkbox name="checkboxes[%{#rowstatus.index}]" theme="simple" disabled="true" /> Acabat</td></s:if>
+            	<s:if test="%{# producte.disponibilitat==0}"><td><s:checkbox name="checkboxes[%{id}]" theme="simple" disabled="true" /> Acabat</td></s:if>
             	
             
-            	<s:else>	<td><s:checkbox name="checkboxes[%{#rowstatus.index}]" theme="simple" /></td></s:else>
+            	<s:else>	<td><s:checkbox name="checkboxes[%{id}]" theme="simple" /></td></s:else>
             	<s:hidden value="%{productes.nom}"/>
             	
     </s:iterator>

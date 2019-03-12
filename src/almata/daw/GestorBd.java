@@ -294,12 +294,12 @@ public class GestorBd {
 		prst.executeUpdate();
 	}
 
-	public Producte obtenirProductealCarro(Producte producte, String login) throws SQLException {
+	public Producte obtenirProductealCarro(Integer id, String login) throws SQLException {
 		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
 		String sql="Select * from Carro where id=? and propietari=?";
 		
 		PreparedStatement trobar=conn.prepareStatement(sql);
-		trobar.setInt(1, producte.getId());
+		trobar.setInt(1, id);
 		trobar.setString(2, login);
 		ResultSet rs=trobar.executeQuery();
 		Producte product=null;
@@ -443,6 +443,22 @@ public class GestorBd {
 		update.setString(2, login);
 		
 		update.executeUpdate();
+	}
+
+	public Producte obtenirProducteperId(Integer id) throws SQLException {
+		Connection conn = DriverManager.getConnection("jdbc:mysql://"+this.hostname+"/"+this.database+this.temps,this.userLogin,this.userPasswd);
+		String sql="Select * from productes where id=?";
+		
+		PreparedStatement trobar=conn.prepareStatement(sql);
+		trobar.setInt(1, id);
+		
+		ResultSet rs=trobar.executeQuery();
+		Producte product=null;
+		while(rs.next()) {
+			product=new Producte(rs.getInt("id"),rs.getString("nom"),rs.getInt("disponibilitat"),rs.getString("descripcio"),rs.getInt("preu"),rs.getString("propietari"));
+		}
+		
+		return product;
 	}
 	
 	
