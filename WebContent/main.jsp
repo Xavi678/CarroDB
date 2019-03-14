@@ -52,7 +52,7 @@ text-align: center;
             	<td align="center"><s:property value="preu"/></td>
             	<td align="center"><s:property value="propietari"/></td>
             	<td align="center"><s:property value="data"/></td>
-            	<s:if test="%{# user.login==null}">
+            	<s:if test="%{user==null}">
             	
             	<td><s:checkbox name="checkboxes[%{id}]" theme="simple" disabled="true" /></td>
             	</s:if>
