@@ -36,7 +36,14 @@ public class LlistarAction  extends DBAction implements SessionAware {
 	private String minDate;
 	private String maxDate;
 	
-
+	private Usuari userLog;
+	
+	public Usuari getu() {
+		return userLog;
+	}
+	public void setu(Usuari u) {
+		this.userLog=u;
+	}
 	
 	
 
@@ -151,6 +158,8 @@ public class LlistarAction  extends DBAction implements SessionAware {
 			productes=db.obtenirProductesPerData(minDateTemp,maxDateTemp);
 			
 		}
+		
+		user=(Usuari) session.get("loginId");
 		
 		
 		

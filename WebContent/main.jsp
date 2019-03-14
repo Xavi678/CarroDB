@@ -14,9 +14,12 @@ text-align: center;
 </style>
 </head>
 <body>
+<h3><s:text name="Usuari: "></s:text> <s:property value="user.login"/></h3>
+
 	<jsp:include page="menu.jsp">
 		<jsp:param name="menuActual" value="llistar.action"/>
 	</jsp:include>
+	
 	<h1><s:text name="llistat.llistatProductes" /></h1>
 	<s:form action="llistar.action">
  	<s:textfield key="preu.minim"  name="minim"></s:textfield> 
@@ -29,6 +32,7 @@ text-align: center;
 	<s:textfield key="data.maxima" name="maxDate"  placeholder="dd/MM/yyyy" value="%{getText('global.date',{maxDate})}"></s:textfield>
 	<s:submit  key="global.filter" align="center"></s:submit>
 	</s:form>
+	
 <s:form action="afegirCarro.action">	
 	<table width="100%">
 			<!-- capcalera -->
@@ -48,10 +52,16 @@ text-align: center;
             	<td align="center"><s:property value="preu"/></td>
             	<td align="center"><s:property value="propietari"/></td>
             	<td align="center"><s:property value="data"/></td>
+            	<s:if test="%{# user.login==null}">
+            	
+            	<td><s:checkbox name="checkboxes[%{id}]" theme="simple" disabled="true" /></td>
+            	</s:if>
+            	<s:else>
             	<s:if test="%{# producte.disponibilitat==0}"><td><s:checkbox name="checkboxes[%{id}]" theme="simple" disabled="true" /> Acabat</td></s:if>
             	
             
             	<s:else>	<td><s:checkbox name="checkboxes[%{id}]" theme="simple" /></td></s:else>
+            	</s:else>
             	<s:hidden value="%{productes.nom}"/>
             	
     </s:iterator>

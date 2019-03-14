@@ -27,14 +27,14 @@
       </action>
       
       <action name="llistar" class="almata.daw.LlistarAction" method="llistarProductes">
-      <interceptor-ref name="loginStack"/>
+     
       <result name="input">main.jsp</result>
         <result name="login">login.jsp</result>
       <result name="success">main.jsp</result>
       </action>
       
-      <action name="logOut" class="almata.daw.LoginAction" method="logOut">
-     <result name="input">login.jsp</result>
+      <action name="sortir" class="almata.daw.Sortir" method="sortir">
+  
       <result name="success">login.jsp</result>
       </action>
       

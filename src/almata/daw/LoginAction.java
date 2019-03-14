@@ -51,12 +51,6 @@ public class LoginAction  extends DBAction implements SessionAware {
 		
 	}
 	
-	public String logOut() {
-		
-		session.invalidate();
-		
-		
-		return SUCCESS;
-	}
+	
 
 }
